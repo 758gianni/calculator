@@ -20,8 +20,12 @@ const App = () => {
 	}, [input, equationComplete]);
 
 	return (
-		<main className='h-[calc(100vh-10rem)] max-w-screen-xl mx-auto bg-neutral-950 flex items-center justify-center'>
-			<div className='w-[calc(4*5rem+3*0.5rem)] h-[calc(30rem+5*0.5rem)] grid grid-cols-4 gap-2'>
+		<div className='h-full max-w-screen-xl mx-auto bg-neutral-950 flex flex-col items-center justify-center'>
+			<header className='w-full h-20 max-w-screen-xl flex items-center justify-center px-4 sm:px-6 lg:px-16'>
+				<h1 className='font-semibold text-2xl text-white'>Calculator</h1>
+			</header>
+
+			<main className='w-[calc(4*5rem+3*0.5rem)] h-[calc(30rem+5*0.5rem)] grid grid-cols-4 gap-2'>
 				<div className='col-span-4 w-full h-20 flex items-center justify-between'>
 					<div className='h-full bg-neutral-900 px-4 flex items-center justify-center rounded-l-2xl'>
 						<button
@@ -65,8 +69,8 @@ const App = () => {
 				<CalculatorButton label='0' className='col-span-2 w-full' />
 				<CalculatorButton label={Dot} />
 				<CalculatorButton label={Equal} className='bg-orange-600 border-orange-600' />
-			</div>
-		</main>
+			</main>
+		</div>
 	);
 };
 
