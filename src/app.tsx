@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Copy, Divide, Dot, Equal, Minus, Parentheses, Percent, Plus, X } from 'lucide-react';
+import { Circle, Copy, Divide, Dot, Equal, Minus, Parentheses, Percent, Plus, X } from 'lucide-react';
 import { useCalculator } from './contexts/calculator-context';
 import { CalculatorButton } from './components/calculator-button';
 
@@ -21,7 +21,9 @@ const App = () => {
 
 	return (
 		<div className='h-full max-w-screen-xl mx-auto bg-neutral-950 flex flex-col items-center justify-center'>
-			<header className='w-full h-20 max-w-screen-xl flex items-center justify-center px-4 sm:px-6 lg:px-16'>
+			<header className='w-full h-20 max-w-screen-xl flex items-center justify-center gap-2 px-4 sm:px-6 lg:px-16'>
+				<Circle className='size-6 text-orange-600 fill-orange-600' />
+
 				<h1 className='font-semibold text-2xl text-white'>Calculator</h1>
 			</header>
 
