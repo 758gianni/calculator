@@ -1,4 +1,4 @@
-import { createElement, FC } from 'react';
+import { createElement, FC, MouseEvent } from 'react';
 import { Divide, Dot, Equal, Minus, Parentheses, Percent, Plus, X } from 'lucide-react';
 import { useCalculator } from '../contexts/calculator-context';
 import clsx from 'clsx';
@@ -15,7 +15,7 @@ const CalculatorButton: FC<CalculatorButtonProps> = ({ label, className }) => {
 	return (
 		<button
 			type='button'
-			onClick={(e) => {
+			onClick={(e: MouseEvent<HTMLButtonElement>) => {
 				e.preventDefault();
 
 				if (equationComplete && input === 'Error') {

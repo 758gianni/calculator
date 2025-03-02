@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { MouseEvent, useEffect, useRef, useState } from 'react';
 import { Check, Circle, Copy, Divide, Dot, Equal, Minus, Parentheses, Percent, Plus, X } from 'lucide-react';
 import { useCalculator } from './contexts/calculator-context';
 import { CalculatorButton } from './components/calculator-button';
@@ -33,7 +33,7 @@ const App = () => {
 					<div className='h-full bg-neutral-900 px-4 flex items-center justify-center rounded-l-2xl'>
 						<button
 							type='button'
-							onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+							onClick={(e: MouseEvent<HTMLButtonElement>) => {
 								e.preventDefault();
 								navigator.clipboard.writeText(equation);
 
