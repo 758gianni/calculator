@@ -1,10 +1,11 @@
-import { useEffect, useRef } from 'react';
-import { Circle, Copy, Divide, Dot, Equal, Minus, Parentheses, Percent, Plus, X } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Check, Circle, Copy, Divide, Dot, Equal, Minus, Parentheses, Percent, Plus, X } from 'lucide-react';
 import { useCalculator } from './contexts/calculator-context';
 import { CalculatorButton } from './components/calculator-button';
 
 const App = () => {
 	const { equation, equationComplete, input } = useCalculator();
+	const [copied, setCopied] = useState(false);
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
@@ -32,12 +33,18 @@ const App = () => {
 					<div className='h-full bg-neutral-900 px-4 flex items-center justify-center rounded-l-2xl'>
 						<button
 							type='button'
-							onClick={(e) => {
+							onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
 								e.preventDefault();
 								navigator.clipboard.writeText(equation);
+
+								setCopied(true);
+								setTimeout(() => {
+									setCopied(false);
+								}, 1500);
 							}}
-							className='z-50 select-none cursor-pointer size-10 flex items-center justify-center text-white bg-neutral-900 rounded-xl border border-neutral-900 transition-all duration-400 ease-in-out hover:border-orange-600 hover:opacity-90'>
-							<Copy className='size-4' />
+							className={`z-50 select-none cursor-pointer size-10 flex items-center justify-center text-white rounded-xl border transition-all duration-400 ease-in-out ${copied ? 'bg-orange-600/20 border-orange-600' : 'bg-neutral-900 border-neutral-900 hover:border-orange-600 hover:opacity-90'}`}>
+							<span className='sr-only'>Copy</span>
+							{copied ? <Check className='size-4 transition-all duration-400 ease-in-out' /> : <Copy className='size-4 transition-all duration-400 ease-in-out' />}
 						</button>
 					</div>
 
